@@ -86,26 +86,4 @@ public class TestDAO {
 		return result; // 만들어졌으면 정수 값 반환 됨.
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
