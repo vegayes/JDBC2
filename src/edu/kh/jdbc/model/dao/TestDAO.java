@@ -85,5 +85,42 @@ public class TestDAO {
 		// 7. SQL 수행 결과 반환
 		return result; // 만들어졌으면 정수 값 반환 됨.
 	}
+
+	/** 번호가 일치하는 행 제목, 내용 수정 DAO
+	 * @param con
+	 * @param vo
+	 * @return
+	 * @throws Exception
+	 */
+	public int update(Connection con , TestVO vo) throws Exception{
+		
+		// 결과 저장용 변수
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("update");
+			/*
+			UPDATE TB_TEST SET
+			TEST_TITLE = ?,
+			TEST_CONTENT = ?
+			WHERE TEST_NO = ?
+			*/
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getTestTitle());
+			pstmt.setString(2, vo.getTestContent());
+			pstmt.setInt(3, vo.getTestNo());
+			
+			result = pstmt.executeUpdate();
+
+		}finally {
+			
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
 	
 }
